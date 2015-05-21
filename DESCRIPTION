@@ -1,0 +1,22 @@
+Package: msWaldHMP
+Type: Package
+Title: Multi-Sample Wald Statistic from HMP
+Version: 0.2
+Date: 2015-03-04
+Author: Federico Mattiello
+Maintainer: Federico Mattiello <Federico.Mattiello@UGent.be>
+Depends:
+    R (>= 3.0.0)
+Suggests:
+    HMP
+Description: Recoding of the scripts producing the MC.Xmcupo.statistics and
+    Xmcupo.sevsample from the HMP package, basically a multi-sample generalised
+    Wald-type statistic.
+License: GPL (>= 2)
+LazyLoad: yes
+Collate:
+    'internals.R'
+    'rDirichlet.R'
+    'msWald.R'
+    'msWaldMC.R'
+    'msWaldStat.R'
