@@ -20,3 +20,4 @@ Collate:
     'msWald.R'
     'msWaldMC.R'
     'msWaldStat.R'
+    'wrapperWMW.R'
