@@ -14,7 +14,9 @@ wrapperWMW(x, y, adjMethod = "BH", ...)
 \item{...}{other parameters for \link{\code{wilcox.test}}}
 }
 \value{
-\code{numeric} vector of length \code{ncol(x)} containing adjusted p.values
+\code{list} with two elements of length \code{ncol(x)},
+    \code{"statistic"} containing the test-statistics, and
+    \code{"p.value"} containing the adjusted p.values vector.
 }
 \description{
 Wrapper function for Wilcoxon-Mann-Whitney test

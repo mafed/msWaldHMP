@@ -31,19 +31,26 @@
 #' @param ...
 #'     other parameters for \link{\code{wilcox.test}}
 #' @return 
-#'     \code{numeric} vector of length \code{ncol(x)} containing adjusted p.values
+#'     \code{list} with two elements of length \code{ncol(x)}, 
+#'     \code{"statistic"} containing the test-statistics, and 
+#'     \code{"p.value"} containing the adjusted p.values vector.
 #' @author Federico Mattiello <Federico.Mattiello@@UGent.be>
 #' @export
 #' 
 wrapperWMW <- function(x, y, adjMethod = "BH", ...)
 {
-  rawPvals <- sapply(seq_len(NCOL(x)), 
+  res <- lapply(seq_len(NCOL(x)), 
       FUN = function(i)
       {
         suppressWarnings(stats:::wilcox.test.default(
-            x = x[, i], y = y[, i], ...)$p.value)
+            x = x[, i], y = y[, i], ...)[c("statistic", "p.value")])
         
       })
-  p.adjust(rawPvals, method = adjMethod)
+  rawPvals <- sapply(res, elNamed, name = "p.value")
+  
+  list(
+      "statistic" = sapply(res, elNamed, name = "statistic"),
+      "p.value" = p.adjust(rawPvals, method = adjMethod)
+  )
 }# END: function - wrapperWMW.R
 
